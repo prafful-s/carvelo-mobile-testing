@@ -87,6 +87,22 @@
           "description": "Number of items per row (1-12). Applies only when Layout is Vertical/Grid"
         },
         {
+          "component": "text",
+          "name": "mobileimagewidth",
+          "label": "Image width",
+          "value": "",
+          "valueType": "number",
+          "description": "Image width on mobile, in pixels. Leave empty for the default"
+        },
+        {
+          "component": "text",
+          "name": "mobileitemheight",
+          "label": "Item height",
+          "value": "",
+          "valueType": "number",
+          "description": "Item height on mobile, in pixels. Leave empty for the default"
+        },
+        {
           "component": "select",
           "name": "mobilesort",
           "label": "Sort by",

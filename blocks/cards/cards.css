@@ -696,11 +696,3 @@ body.securbank-theme .cards > ul > li.teaser-card .cards-card-body {
 .cards div:has(> [data-aue-prop="overlaybackground"]) {
   display: none !important;
 }
-
-/* mobilelayout = "vertical/grid" (default is horizontal, the existing flex layout above).
-   mobileitemsinrow sets --cards-items-in-row; unset, repeat() falls back to auto-fill. */
-.cards.cards-layout-grid > ul {
-  display: grid;
-  grid-template-columns: repeat(var(--cards-items-in-row, auto-fill), minmax(240px, 1fr));
-  gap: 20px;
-}

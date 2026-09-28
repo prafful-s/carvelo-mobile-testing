@@ -16,47 +16,17 @@ export default function decorate(block) {
     if (eventType) dispatchCustomEvent(eventType);
   };
 
-  // The cards block's own Mobile Specific properties (classes, mobilerenderaslist, mobilelayout,
+  // The cards block's own properties (classes, mobilerenderaslist, mobilelayout,
   // mobileitemsinrow, mobilesort, custommobilestyle) render as extra rows among block.children,
   // ahead of the actual card rows - one row per field, in the model's own field order. Each such
   // row wraps exactly one bare-value cell; a real card row always carries every one of the card
-  // model's own fields as separate sibling cells, so it never has just one child. Strip the
-  // block's own rows here, before the loop below treats every remaining row as a card - otherwise
-  // they show up as bogus cards with visible raw text ("true", "horizontal", "none"...).
-  const blockConfigRows = [...block.children].filter((row) => row.children.length <= 1);
-  const readBlockConfig = (row) => (row?.children?.[0]?.textContent ?? row?.textContent ?? '').trim();
-  const [classesRow, renderAsListRow, layoutRow, itemsInRowRow, sortRow, ...customStyleRows] = blockConfigRows;
-
-  const blockClasses = readBlockConfig(classesRow);
-  const mobileLayout = readBlockConfig(layoutRow);
-  const mobileItemsInRow = parseInt(readBlockConfig(itemsInRowRow), 10);
-  const mobileSort = readBlockConfig(sortRow);
-  void renderAsListRow; // mobilerenderaslist only matters to the mobile app's own JSON export.
-
-  blockConfigRows.forEach((row) => row.remove());
-
-  if (blockClasses) {
-    blockClasses.split(/\s+/).forEach((part) => {
-      const cls = toClassName(part.trim());
-      if (cls) block.classList.add(cls);
-    });
-  }
-
-  if (mobileLayout === 'vertical/grid') {
-    block.classList.add('cards-layout-grid');
-    if (!Number.isNaN(mobileItemsInRow) && mobileItemsInRow > 0) {
-      block.style.setProperty('--cards-items-in-row', mobileItemsInRow);
-    }
-  }
-
-  customStyleRows.forEach((row) => {
-    const raw = readBlockConfig(row);
-    const sep = raw.indexOf(':');
-    if (sep <= 0) return;
-    const key = raw.slice(0, sep).trim();
-    const value = raw.slice(sep + 1).trim();
-    if (key && value) block.style[key] = value;
-  });
+  // model's own fields as separate sibling cells, so it never has just one child. These fields are
+  // JCR-only - read by the mobile app's own export, not by this site - so they are simply removed
+  // here, before the loop below treats every remaining row as a card; otherwise they show up as
+  // bogus cards with visible raw text ("true", "horizontal", "none"...).
+  [...block.children]
+    .filter((row) => row.children.length <= 1)
+    .forEach((row) => row.remove());
 
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
@@ -267,16 +237,6 @@ export default function decorate(block) {
     
     ul.append(li);
   });
-
-  if (mobileSort === 'alphabetical' || mobileSort === 'alphabetical-reverse') {
-    const titleOf = (li) => (
-      li.querySelector('.cards-card-body h1, .cards-card-body h2, .cards-card-body h3, .cards-card-body h4')
-        ?.textContent || li.textContent || ''
-    ).trim().toLowerCase();
-    const sorted = [...ul.children].sort((a, b) => titleOf(a).localeCompare(titleOf(b)));
-    if (mobileSort === 'alphabetical-reverse') sorted.reverse();
-    sorted.forEach((li) => ul.append(li));
-  }
 
   const cardPictureBreakpoints = document.body.classList.contains('luma-theme')
     ? [

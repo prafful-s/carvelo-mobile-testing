@@ -2171,6 +2171,36 @@
         "name": "mobileSpecific"
       },
       {
+        "component": "select",
+        "name": "mobilealignment",
+        "label": "Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          },
+          {
+            "name": "Stretch",
+            "value": "stretch"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "mobilebuttoneventtype",
+        "label": "Button Event Type",
+        "value": "",
+        "valueType": "string"
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "custommobilestyle",

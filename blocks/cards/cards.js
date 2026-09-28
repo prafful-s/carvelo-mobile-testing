@@ -20,13 +20,23 @@ export default function decorate(block) {
   // mobileitemsinrow, mobilesort, custommobilestyle) render as extra rows among block.children,
   // ahead of the actual card rows - one row per field, in the model's own field order. Each such
   // row wraps exactly one bare-value cell; a real card row always carries every one of the card
-  // model's own fields as separate sibling cells, so it never has just one child. These fields are
-  // JCR-only - read by the mobile app's own export, not by this site - so they are simply removed
-  // here, before the loop below treats every remaining row as a card; otherwise they show up as
-  // bogus cards with visible raw text ("true", "horizontal", "none"...).
-  [...block.children]
-    .filter((row) => row.children.length <= 1)
-    .forEach((row) => row.remove());
+  // model's own fields as separate sibling cells, so it never has just one child. Strip them all so
+  // none show up as a bogus card with its raw value as visible text ("true", "horizontal",
+  // "none"...) - classes is the one field among them meant for this site (the rest are JCR-only,
+  // read by the mobile app's own export), so read it, first in the model's field order, before the
+  // rows are removed.
+  const blockConfigRows = [...block.children].filter((row) => row.children.length <= 1);
+  const blockClasses = (blockConfigRows[0]?.children?.[0]?.textContent
+    ?? blockConfigRows[0]?.textContent ?? '').trim();
+
+  blockConfigRows.forEach((row) => row.remove());
+
+  if (blockClasses) {
+    blockClasses.split(/\s+/).forEach((part) => {
+      const cls = toClassName(part.trim());
+      if (cls) block.classList.add(cls);
+    });
+  }
 
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {

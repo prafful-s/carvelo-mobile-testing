@@ -429,6 +429,11 @@
     "id": "section",
     "fields": [
       {
+        "component": "tab",
+        "label": "Basic",
+        "name": "basic"
+      },
+      {
         "component": "text",
         "name": "name",
         "label": "Section Name",
@@ -657,6 +662,19 @@
         "value": "",
         "label": "Item widths (%)",
         "description": "Comma-separated width percentages for items in this section (e.g. 25,25,50). When set, items are arranged horizontally with these widths."
+      },
+      {
+        "component": "tab",
+        "label": "Mobile Specific",
+        "name": "mobileSpecific"
+      },
+      {
+        "component": "text",
+        "name": "custommobilestyle",
+        "label": "Custom Mobile Style",
+        "valueType": "string[]",
+        "multi": true,
+        "description": "One style per row, as key:value (e.g. width:250, padding:0)"
       }
     ]
   },

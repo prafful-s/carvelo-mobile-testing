@@ -9406,6 +9406,23 @@
         ]
       },
       {
+        "component": "select",
+        "name": "mobileimagestyle",
+        "label": "Image Resize Mode",
+        "valueType": "string",
+        "value": "contain",
+        "options": [
+          {
+            "name": "Contain",
+            "value": "contain"
+          },
+          {
+            "name": "Cover",
+            "value": "cover"
+          }
+        ]
+      },
+      {
         "component": "text",
         "name": "mobileitemsinrow",
         "label": "Items in row",

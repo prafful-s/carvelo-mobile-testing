@@ -9423,6 +9423,32 @@
         ]
       },
       {
+        "component": "select",
+        "name": "mobileitemrenderer",
+        "label": "Item variant",
+        "valueType": "string",
+        "value": "image-text-one-line",
+        "description": "Image and text in one line works only with Vertical/Grid layout",
+        "options": [
+          {
+            "name": "Image and text in one line",
+            "value": "image-text-one-line"
+          },
+          {
+            "name": "Image and text overlay",
+            "value": "overlay"
+          },
+          {
+            "name": "Image and text below",
+            "value": "stacked"
+          },
+          {
+            "name": "Single Image",
+            "value": "image"
+          }
+        ]
+      },
+      {
         "component": "text",
         "name": "mobileitemsinrow",
         "label": "Items in row",

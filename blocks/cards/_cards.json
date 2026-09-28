@@ -319,7 +319,7 @@
           "options": [
             {
               "name": "Image and text in one line",
-              "value": "one-line"
+              "value": "image-text-one-line"
             },
             {
               "name": "Image and text overlay",
@@ -327,7 +327,7 @@
             },
             {
               "name": "Image and text below",
-              "value": "below"
+              "value": "stacked"
             },
             {
               "name": "Image partially overlayed",
@@ -364,8 +364,9 @@
           "name": "custommobilestyle",
           "label": "Custom Mobile Style",
           "value": "",
-          "valueType": "string",
-          "description": "Custom styles for the card on mobile"
+          "valueType": "string[]",
+          "description": "Custom styles for the card on mobile",
+          "multi": true
         }
       ]
     }

@@ -16,27 +16,10 @@ export default function decorate(block) {
     if (eventType) dispatchCustomEvent(eventType);
   };
 
-  // The cards block's own properties (classes, mobilerenderaslist, mobilelayout,
-  // mobileitemsinrow, mobilesort, custommobilestyle) render as extra rows among block.children,
-  // ahead of the actual card rows - one row per field, in the model's own field order. Each such
-  // row wraps exactly one bare-value cell; a real card row always carries every one of the card
-  // model's own fields as separate sibling cells, so it never has just one child. Strip them all so
-  // none show up as a bogus card with its raw value as visible text ("true", "horizontal",
-  // "none"...) - classes is the one field among them meant for this site (the rest are JCR-only,
-  // read by the mobile app's own export), so read it, first in the model's field order, before the
-  // rows are removed.
-  const blockConfigRows = [...block.children].filter((row) => row.children.length <= 1);
-  const blockClasses = (blockConfigRows[0]?.children?.[0]?.textContent
-    ?? blockConfigRows[0]?.textContent ?? '').trim();
-
-  blockConfigRows.forEach((row) => row.remove());
-
-  if (blockClasses) {
-    blockClasses.split(/\s+/).forEach((part) => {
-      const cls = toClassName(part.trim());
-      if (cls) block.classList.add(cls);
-    });
-  }
+  // The filter method filters out the config divs from the cards children so only the actual card divs are used for rendering
+  [...block.children]
+    .filter((row) => row.children.length <= 1)
+    .forEach((row) => row.remove());
 
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {

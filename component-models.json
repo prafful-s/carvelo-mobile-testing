@@ -2087,6 +2087,11 @@
     "id": "action-button",
     "fields": [
       {
+        "component": "tab",
+        "label": "Basic",
+        "name": "basic"
+      },
+      {
         "component": "aem-content",
         "valueType": "string",
         "name": "link",
@@ -2158,6 +2163,20 @@
         "label": "Button Event Type",
         "value": "",
         "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Mobile Specific",
+        "name": "mobileSpecific"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "custommobilestyle",
+        "label": "Custom Mobile Style",
+        "value": "",
+        "multi": true,
+        "description": "Custom styles for the action button on mobile"
       }
     ]
   },
@@ -9157,6 +9176,11 @@
     "id": "cards",
     "fields": [
       {
+        "component": "tab",
+        "label": "Basic",
+        "name": "basic"
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "classes",
@@ -9165,13 +9189,9 @@
         "description": "Add custom CSS class names (space-separated). Example: feature-cards, image-left, bg-light-gray"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "custommobilestyle",
-        "label": "Custom Mobile Style",
-        "value": "",
-        "multi": true,
-        "description": "Custom styles for the cards list on mobile"
+        "component": "tab",
+        "label": "Mobile Specific",
+        "name": "mobileSpecific"
       },
       {
         "component": "boolean",
@@ -9226,6 +9246,15 @@
             "value": "none"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "custommobilestyle",
+        "label": "Custom Mobile Style",
+        "value": "",
+        "multi": true,
+        "description": "Custom styles for the cards list on mobile"
       }
     ]
   },

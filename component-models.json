@@ -429,6 +429,11 @@
     "id": "section",
     "fields": [
       {
+        "component": "tab",
+        "label": "Basic",
+        "name": "basic"
+      },
+      {
         "component": "text",
         "name": "name",
         "label": "Section Name",
@@ -657,6 +662,19 @@
         "value": "",
         "label": "Item widths (%)",
         "description": "Comma-separated width percentages for items in this section (e.g. 25,25,50). When set, items are arranged horizontally with these widths."
+      },
+      {
+        "component": "tab",
+        "label": "Mobile Specific",
+        "name": "mobileSpecific"
+      },
+      {
+        "component": "text",
+        "name": "custommobilestyle",
+        "label": "Custom Mobile Style",
+        "valueType": "string[]",
+        "multi": true,
+        "description": "One style per row, as key:value (e.g. width:250, padding:0)"
       }
     ]
   },
@@ -860,7 +878,7 @@
         "options": [
           {
             "name": "Image and text in one line",
-            "value": "one-line"
+            "value": "image-text-one-line"
           },
           {
             "name": "Image and text overlay",
@@ -868,7 +886,7 @@
           },
           {
             "name": "Image and text below",
-            "value": "below"
+            "value": "stacked"
           },
           {
             "name": "Image partially overlayed",
@@ -905,8 +923,9 @@
         "name": "custommobilestyle",
         "label": "Custom Mobile Style",
         "value": "",
-        "valueType": "string",
-        "description": "Custom styles for the card on mobile"
+        "valueType": "string[]",
+        "description": "Custom styles for the card on mobile",
+        "multi": true
       }
     ]
   },
@@ -2087,6 +2106,11 @@
     "id": "action-button",
     "fields": [
       {
+        "component": "tab",
+        "label": "Basic",
+        "name": "basic"
+      },
+      {
         "component": "aem-content",
         "valueType": "string",
         "name": "link",
@@ -2158,6 +2182,77 @@
         "label": "Button Event Type",
         "value": "",
         "valueType": "string"
+      },
+      {
+        "component": "tab",
+        "label": "Mobile Specific",
+        "name": "mobileSpecific"
+      },
+      {
+        "component": "select",
+        "name": "mobilebuttonvariant",
+        "label": "Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "contained"
+          },
+          {
+            "name": "Secondary",
+            "value": "contained-tonal"
+          },
+          {
+            "name": "Outlined",
+            "value": "outlined"
+          },
+          {
+            "name": "Quiet",
+            "value": "text"
+          },
+          {
+            "name": "Elevated",
+            "value": "elevated"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "mobilealignment",
+        "label": "Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          },
+          {
+            "name": "Stretch",
+            "value": "stretch"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "mobilebuttoneventtype",
+        "label": "Button Event Type",
+        "value": "",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "custommobilestyle",
+        "label": "Custom Mobile Style",
+        "value": "",
+        "multi": true,
+        "description": "Custom styles for the action button on mobile"
       }
     ]
   },

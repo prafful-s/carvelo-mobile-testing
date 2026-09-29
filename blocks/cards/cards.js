@@ -16,6 +16,11 @@ export default function decorate(block) {
     if (eventType) dispatchCustomEvent(eventType);
   };
 
+  // The filter method filters out the config divs from the cards children so only the actual card divs are used for rendering
+  [...block.children]
+    .filter((row) => row.children.length <= 1)
+    .forEach((row) => row.remove());
+
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
@@ -225,6 +230,7 @@ export default function decorate(block) {
     
     ul.append(li);
   });
+
   const cardPictureBreakpoints = document.body.classList.contains('luma-theme')
     ? [
       { media: '(min-width: 600px)', width: '600' },

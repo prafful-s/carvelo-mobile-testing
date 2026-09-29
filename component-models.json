@@ -2190,6 +2190,33 @@
       },
       {
         "component": "select",
+        "name": "mobilebuttonvariant",
+        "label": "Variant",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "contained"
+          },
+          {
+            "name": "Secondary",
+            "value": "contained-tonal"
+          },
+          {
+            "name": "Outlined",
+            "value": "outlined"
+          },
+          {
+            "name": "Quiet",
+            "value": "text"
+          },
+          {
+            "name": "Elevated",
+            "value": "elevated"
+          }
+        ]
+      },
+      {
+        "component": "select",
         "name": "mobilealignment",
         "label": "Alignment",
         "options": [

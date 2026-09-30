@@ -9568,22 +9568,6 @@
         }
       },
       {
-        "component": "text",
-        "name": "mobileimagewidth",
-        "label": "Image width",
-        "value": "",
-        "valueType": "number",
-        "description": "Image width on mobile, in pixels. Leave empty for the default"
-      },
-      {
-        "component": "text",
-        "name": "mobileitemheight",
-        "label": "Item height",
-        "value": "",
-        "valueType": "number",
-        "description": "Item height on mobile, in pixels. Leave empty for the default"
-      },
-      {
         "component": "select",
         "name": "mobileImageResize",
         "label": "Image resize mode",

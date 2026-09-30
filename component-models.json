@@ -1519,48 +1519,96 @@
     ]
   },
   {
-    "id": "content-card",
+    "id": "decisioning-container",
     "fields": [
       {
         "component": "text",
-        "name": "linkTo",
-        "label": "Link To",
-        "value": "luma-plus",
+        "name": "mobileNickname",
+        "label": "Nickname",
         "valueType": "string"
       },
       {
         "component": "text",
-        "name": "surface",
+        "name": "mobileSurface",
         "label": "Surface",
-        "value": "luma.home.campaignArea1",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "mobileFallbackImage",
+        "label": "Fallback Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "mobileLinkTo",
+        "label": "Link To",
         "valueType": "string"
       },
       {
         "component": "boolean",
-        "name": "showTitle",
+        "name": "mobileShowTitle",
         "label": "Show Title",
         "value": "false",
         "valueType": "boolean"
       },
       {
         "component": "boolean",
-        "name": "showButton",
-        "label": "Show Button",
+        "name": "mobileShowDebugMessage",
+        "label": "Show Debug Message",
         "value": "false",
         "valueType": "boolean"
       },
       {
         "component": "text",
-        "name": "buttonLabel",
-        "label": "Button Label",
-        "value": "",
+        "name": "mobileOverlayOpacity",
+        "label": "Overlay Opacity",
         "valueType": "string"
       },
       {
         "component": "select",
-        "name": "imageResize",
-        "label": "Image Resize",
-        "value": "contain",
+        "name": "mobileTitleSize",
+        "label": "Title Size",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Large",
+            "value": "large"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "mobileSubtitleSize",
+        "label": "Subtitle Size",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Large",
+            "value": "large"
+          },
+          {
+            "name": "Medium",
+            "value": "medium"
+          },
+          {
+            "name": "Small",
+            "value": "small"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "mobileImageResize",
+        "label": "Image Resize Mode",
         "valueType": "string",
         "options": [
           {
@@ -1575,37 +1623,8 @@
       },
       {
         "component": "select",
-        "name": "buttonVariant",
-        "label": "Button Variant",
-        "value": "contained",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Contained",
-            "value": "contained"
-          },
-          {
-            "name": "Outlined",
-            "value": "outlined"
-          },
-          {
-            "name": "Text",
-            "value": "text"
-          }
-        ]
-      },
-      {
-        "component": "text",
-        "name": "fallbackImage",
-        "label": "Fallback Image",
-        "value": "https://demo-system-next.s3.amazonaws.com/assets/luma/offers/offer-anonymous-default.png",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "name": "contentAlignment",
-        "label": "Content Alignment",
-        "value": "left",
+        "name": "mobileHorizontalAlignment",
+        "label": "Horizontal Alignment",
         "valueType": "string",
         "options": [
           {
@@ -1623,17 +1642,29 @@
         ]
       },
       {
-        "component": "boolean",
-        "name": "showDebugMessage",
-        "label": "Show Debug Message",
-        "value": "false",
-        "valueType": "boolean"
+        "component": "select",
+        "name": "mobileContentAlignment",
+        "label": "Content Alignment",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
       },
       {
         "component": "select",
-        "name": "verticalAlignment",
+        "name": "mobileVerticalAlignment",
         "label": "Vertical Alignment",
-        "value": "bottom",
         "valueType": "string",
         "options": [
           {
@@ -1647,6 +1678,36 @@
           {
             "name": "Bottom",
             "value": "bottom"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "name": "mobileShowButton",
+        "label": "Show Button",
+        "value": "false",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text",
+        "name": "mobileCustomStyles",
+        "label": "Custom Styles",
+        "valueType": "string",
+        "multi": true
+      },
+      {
+        "component": "select",
+        "name": "mobileDecisioningType",
+        "label": "Decisioning Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Experience",
+            "value": "experience"
+          },
+          {
+            "name": "Offer",
+            "value": "offer"
           }
         ]
       }

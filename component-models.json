@@ -9468,7 +9468,7 @@
       },
       {
         "component": "select",
-        "name": "itemRenderer",
+        "name": "mobileItemRenderer",
         "label": "Item variant",
         "valueType": "string",
         "value": "overlay",
@@ -9500,7 +9500,7 @@
       },
       {
         "component": "number",
-        "name": "itemsInRow",
+        "name": "mobileItemsInRow",
         "label": "Items in row",
         "value": 1,
         "valueType": "number",
@@ -9516,7 +9516,7 @@
       },
       {
         "component": "select",
-        "name": "imageResize",
+        "name": "mobileImageResize",
         "label": "Image resize mode",
         "valueType": "string",
         "value": "cover",

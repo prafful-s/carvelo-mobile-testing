@@ -1,5 +1,5 @@
 /* Content Card is a blank container; it must never occupy layout space. */
-.content-card,
-.content-card.block {
+.decisioning-container,
+.decisioning-container.block {
   display: none !important;
 }

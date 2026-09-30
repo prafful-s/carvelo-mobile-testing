@@ -80,14 +80,6 @@
           ]
         },
         {
-          "component": "text",
-          "name": "mobileitemsinrow",
-          "label": "Items in row",
-          "value": "",
-          "valueType": "number",
-          "description": "Number of items per row (1-12). Applies only when Layout is Vertical/Grid"
-        },
-        {
           "component": "select",
           "name": "mobilesort",
           "label": "Sort by",
@@ -110,7 +102,7 @@
         },
         {
           "component": "text",
-          "valueType": "string",
+          "valueType": "string[]",
           "name": "custommobilestyle",
           "label": "Custom Mobile Style",
           "value": "",
@@ -386,7 +378,7 @@
           "name": "mobilecardstyle",
           "label": "Card Type",
           "valueType": "string",
-          "value": "below",
+          "value": "stacked",
           "options": [
             {
               "name": "Image and text in one line",

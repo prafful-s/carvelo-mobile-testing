@@ -80,30 +80,6 @@
           ]
         },
         {
-          "component": "text",
-          "name": "mobileitemsinrow",
-          "label": "Items in row",
-          "value": "",
-          "valueType": "number",
-          "description": "Number of items per row (1-12). Applies only when Layout is Vertical/Grid"
-        },
-        {
-          "component": "text",
-          "name": "mobileimagewidth",
-          "label": "Image width",
-          "value": "",
-          "valueType": "number",
-          "description": "Image width on mobile, in pixels. Leave empty for the default"
-        },
-        {
-          "component": "text",
-          "name": "mobileitemheight",
-          "label": "Item height",
-          "value": "",
-          "valueType": "number",
-          "description": "Item height on mobile, in pixels. Leave empty for the default"
-        },
-        {
           "component": "select",
           "name": "mobilesort",
           "label": "Sort by",
@@ -126,12 +102,99 @@
         },
         {
           "component": "text",
-          "valueType": "string",
+          "valueType": "string[]",
           "name": "custommobilestyle",
           "label": "Custom Mobile Style",
           "value": "",
           "multi": true,
           "description": "Custom styles for the cards list on mobile"
+        },
+        {
+          "component": "select",
+          "name": "mobileItemRenderer",
+          "label": "Item variant",
+          "valueType": "string",
+          "value": "overlay",
+          "description": "Item variant. Options are filtered by the current layout value.",
+          "options": [
+            {
+              "name": "Image and text in one line (grid only)",
+              "value": "image-text-one-line"
+            },
+            {
+              "name": "Image and text overlay (grid + horizontal)",
+              "value": "overlay"
+            },
+            {
+              "name": "Image and text below (grid + horizontal)",
+              "value": "stacked"
+            },
+            {
+              "name": "Single Image (grid + horizontal)",
+              "value": "image"
+            }
+          ],
+          "condition": {
+            "==": [
+              { "var": "mobilerenderaslist" },
+              true
+            ]
+          }
+        },
+        {
+          "component": "number",
+          "name": "mobileItemsInRow",
+          "label": "Items in row",
+          "value": 1,
+          "valueType": "number",
+          "min": 1,
+          "max": 12,
+          "description": "Number of items per row (1-12). Shown only when Layout is Vertical/Grid.",
+          "condition": {
+            "and": [
+              { "==": [ { "var": "mobilerenderaslist" }, true ] },
+              { "==": [ { "var": "mobilelayout" }, "vertical/grid" ] }
+            ]
+          }
+        },
+        {
+          "component": "text",
+          "name": "mobileimagewidth",
+          "label": "Image width",
+          "value": "",
+          "valueType": "number",
+          "description": "Image width on mobile, in pixels. Leave empty for the default"
+        },
+        {
+          "component": "text",
+          "name": "mobileitemheight",
+          "label": "Item height",
+          "value": "",
+          "valueType": "number",
+          "description": "Item height on mobile, in pixels. Leave empty for the default"
+        },
+        {
+          "component": "select",
+          "name": "mobileImageResize",
+          "label": "Image resize mode",
+          "valueType": "string",
+          "value": "cover",
+          "options": [
+            {
+              "name": "Contain",
+              "value": "contain"
+            },
+            {
+              "name": "Cover",
+              "value": "cover"
+            }
+          ],
+          "condition": {
+            "==": [
+              { "var": "mobilerenderaslist" },
+              true
+            ]
+          }
         }
       ]
     },
@@ -331,7 +394,7 @@
           "name": "mobilecardstyle",
           "label": "Card Type",
           "valueType": "string",
-          "value": "below",
+          "value": "stacked",
           "options": [
             {
               "name": "Image and text in one line",

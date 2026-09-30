@@ -520,6 +520,12 @@ main .section[data-section-status="loaded"] > .default-content-wrapper {
   min-height: 0;
 }
 
+/* Content Card is a blank container: keep it hidden before and after load. */
+.content-card,
+.content-card.block {
+  display: none !important;
+}
+
 /* Prevent cards FOUC: reserve space until loaded. */
 .cards.block[data-block-status="initialized"],
 .cards.block[data-block-status="loading"] {

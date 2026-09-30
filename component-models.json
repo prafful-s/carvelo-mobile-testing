@@ -874,7 +874,7 @@
         "name": "mobilecardstyle",
         "label": "Card Type",
         "valueType": "string",
-        "value": "below",
+        "value": "stacked",
         "options": [
           {
             "name": "Image and text in one line",
@@ -1515,6 +1515,140 @@
         "value": "",
         "valueType": "string",
         "description": "Space-separated class names to add to the block"
+      }
+    ]
+  },
+  {
+    "id": "content-card",
+    "fields": [
+      {
+        "component": "text",
+        "name": "linkTo",
+        "label": "Link To",
+        "value": "luma-plus",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "surface",
+        "label": "Surface",
+        "value": "luma.home.campaignArea1",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "name": "showTitle",
+        "label": "Show Title",
+        "value": "false",
+        "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
+        "name": "showButton",
+        "label": "Show Button",
+        "value": "false",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text",
+        "name": "buttonLabel",
+        "label": "Button Label",
+        "value": "",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "imageResize",
+        "label": "Image Resize",
+        "value": "contain",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Contain",
+            "value": "contain"
+          },
+          {
+            "name": "Cover",
+            "value": "cover"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "buttonVariant",
+        "label": "Button Variant",
+        "value": "contained",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Contained",
+            "value": "contained"
+          },
+          {
+            "name": "Outlined",
+            "value": "outlined"
+          },
+          {
+            "name": "Text",
+            "value": "text"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "fallbackImage",
+        "label": "Fallback Image",
+        "value": "https://demo-system-next.s3.amazonaws.com/assets/luma/offers/offer-anonymous-default.png",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "contentAlignment",
+        "label": "Content Alignment",
+        "value": "left",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "name": "showDebugMessage",
+        "label": "Show Debug Message",
+        "value": "false",
+        "valueType": "boolean"
+      },
+      {
+        "component": "select",
+        "name": "verticalAlignment",
+        "label": "Vertical Alignment",
+        "value": "bottom",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Top",
+            "value": "top"
+          },
+          {
+            "name": "Middle",
+            "value": "middle"
+          },
+          {
+            "name": "Bottom",
+            "value": "bottom"
+          }
+        ]
       }
     ]
   },
@@ -9270,15 +9404,6 @@
         "name": "mobileSpecific"
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "custommobilestyle",
-        "label": "Custom Mobile Style",
-        "value": "",
-        "multi": true,
-        "description": "Custom styles for the cards list on mobile"
-      },
-      {
         "component": "boolean",
         "name": "mobilerenderaslist",
         "label": "Render as List",
@@ -9304,30 +9429,6 @@
         ]
       },
       {
-        "component": "text",
-        "name": "mobileitemsinrow",
-        "label": "Items in row",
-        "value": "",
-        "valueType": "number",
-        "description": "Number of items per row (1-12). Applies only when Layout is Vertical/Grid"
-      },
-      {
-        "component": "text",
-        "name": "mobileimagewidth",
-        "label": "Image width",
-        "value": "",
-        "valueType": "number",
-        "description": "Image width on mobile, in pixels. Leave empty for the default"
-      },
-      {
-        "component": "text",
-        "name": "mobileitemheight",
-        "label": "Item height",
-        "value": "",
-        "valueType": "number",
-        "description": "Item height on mobile, in pixels. Leave empty for the default"
-      },
-      {
         "component": "select",
         "name": "mobilesort",
         "label": "Sort by",
@@ -9347,6 +9448,102 @@
             "value": "none"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string[]",
+        "name": "custommobilestyle",
+        "label": "Custom Mobile Style",
+        "value": "",
+        "multi": true,
+        "description": "Custom styles for the cards list on mobile"
+      },
+      {
+        "component": "select",
+        "name": "mobileItemRenderer",
+        "label": "Item variant",
+        "valueType": "string",
+        "value": "overlay",
+        "description": "Item variant. Options are filtered by the current layout value.",
+        "options": [
+          {
+            "name": "Image and text in one line (grid only)",
+            "value": "image-text-one-line"
+          },
+          {
+            "name": "Image and text overlay (grid + horizontal)",
+            "value": "overlay"
+          },
+          {
+            "name": "Image and text below (grid + horizontal)",
+            "value": "stacked"
+          },
+          {
+            "name": "Single Image (grid + horizontal)",
+            "value": "image"
+          }
+        ],
+        "condition": {
+          "==": [
+            { "var": "mobilerenderaslist" },
+            true
+          ]
+        }
+      },
+      {
+        "component": "number",
+        "name": "mobileItemsInRow",
+        "label": "Items in row",
+        "value": 1,
+        "valueType": "number",
+        "min": 1,
+        "max": 12,
+        "description": "Number of items per row (1-12). Shown only when Layout is Vertical/Grid.",
+        "condition": {
+          "and": [
+            { "==": [ { "var": "mobilerenderaslist" }, true ] },
+            { "==": [ { "var": "mobilelayout" }, "vertical/grid" ] }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "mobileimagewidth",
+        "label": "Image width",
+        "value": "",
+        "valueType": "number",
+        "description": "Image width on mobile, in pixels. Leave empty for the default"
+      },
+      {
+        "component": "text",
+        "name": "mobileitemheight",
+        "label": "Item height",
+        "value": "",
+        "valueType": "number",
+        "description": "Item height on mobile, in pixels. Leave empty for the default"
+      },
+      {
+        "component": "select",
+        "name": "mobileImageResize",
+        "label": "Image resize mode",
+        "valueType": "string",
+        "value": "cover",
+        "options": [
+          {
+            "name": "Contain",
+            "value": "contain"
+          },
+          {
+            "name": "Cover",
+            "value": "cover"
+          }
+        ],
+        "condition": {
+          "==": [
+            { "var": "mobilerenderaslist" },
+            true
+          ]
+        }
       }
     ]
   },

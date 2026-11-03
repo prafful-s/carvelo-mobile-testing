@@ -378,19 +378,9 @@ function handleCheckout() {
 /**
  * Build cart summary section
  * @param {Object} cartData - Cart data
- * @param {Object} [options] - Section visibility options
- * @param {boolean} [options.showPromoCode] - Show promo/discount code input
- * @param {boolean} [options.showDiscount] - Show discount row in totals
- * @param {boolean} [options.showShippingCharge] - Show shipping row in totals
  * @returns {HTMLElement} Cart summary
  */
-function buildCartSummary(cartData, options = {}) {
-  const {
-    showPromoCode = true,
-    showDiscount = true,
-    showShippingCharge = true,
-  } = options;
-
+function buildCartSummary(cartData) {
   const summary = document.createElement("div");
   summary.className = "cart-summary";
 
@@ -462,11 +452,7 @@ function buildCartSummary(cartData, options = {}) {
     <span class="cart-total-value">${formatPrice(cartData.total || 0)}</span>
   `;
 
-  const totalsRows = [subtotalRow];
-  if (showShippingCharge) totalsRows.push(shippingRow);
-  if (showDiscount) totalsRows.push(discountRow);
-  totalsRows.push(totalRow);
-  totalsSection.append(...totalsRows);
+  totalsSection.append(subtotalRow, shippingRow, discountRow, totalRow);
 
   // Checkout button
   const checkoutBtn = document.createElement("button");
@@ -484,11 +470,9 @@ function buildCartSummary(cartData, options = {}) {
     guestCheckoutBtn.addEventListener("click", handleCheckout);
 
     checkoutActions.append(guestCheckoutBtn, checkoutBtn);
-    if (showPromoCode) summary.append(discountSection);
-    summary.append(totalsSection, checkoutActions);
+    summary.append(discountSection, totalsSection, checkoutActions);
   } else {
-    if (showPromoCode) summary.append(discountSection);
-    summary.append(totalsSection, checkoutBtn);
+    summary.append(discountSection, totalsSection, checkoutBtn);
   }
   return summary;
 }
@@ -733,27 +717,6 @@ export default async function decorate(block) {
             config["show-you-may-also-like-section"]
         );
 
-  const showPromoCode =
-    config.showpromocode === undefined &&
-    config["show-promo-code"] === undefined
-      ? true
-      : isTruthy(config.showpromocode ?? config["show-promo-code"]);
-  const showDiscount =
-    config.showdiscount === undefined &&
-    config["show-discount"] === undefined
-      ? true
-      : isTruthy(config.showdiscount ?? config["show-discount"]);
-  const showShippingCharge =
-    config.showshippingcharge === undefined &&
-    config["show-shipping-charge"] === undefined
-      ? true
-      : isTruthy(config.showshippingcharge ?? config["show-shipping-charge"]);
-  const summaryOptions = {
-    showPromoCode,
-    showDiscount,
-    showShippingCharge,
-  };
-
   // Extract folder path from block config
   let folderHref = "";
   const link = block.querySelector("a[href]");
@@ -793,7 +756,7 @@ export default async function decorate(block) {
   const currentCart = getCartSnapshot() || getEmptyCart();
 
   // Build cart summary
-  const summary = buildCartSummary(currentCart, summaryOptions);
+  const summary = buildCartSummary(currentCart);
 
   // Build layout
   const cartContent = document.createElement("div");

@@ -30,7 +30,6 @@
           "component": "text",
           "name": "form-title",
           "label": "Form Title",
-          "value": "JOIN WKND FLY CLUB",
           "valueType": "string"
         },
         {
@@ -126,10 +125,26 @@
         },
         {
           "component": "text",
+          "name": "mobileFormID",
+          "label": "Mobile Form ID",
+          "value": "",
+          "valueType": "string",
+          "description": "Optional form ID to associate with this form in the mobile app."
+        },
+        {
+          "component": "text",
           "name": "mobilebuttoneventtype",
           "label": "Mobile Button Event Type",
           "value": "",
           "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "mobileRedirectUrl",
+          "label": "Mobile Redirect URL",
+          "value": "",
+          "valueType": "string",
+          "description": "Page to open in the mobile app after successful form submission. Leave empty to use the existing redirect default."
         },
         {
           "component": "text",

@@ -18,11 +18,6 @@
       "id": "image",
       "fields": [
         {
-          "component": "tab",
-          "label": "Basic",
-          "name": "basic"
-        },
-        {
           "component": "reference",
           "name": "image",
           "label": "Image",
@@ -32,28 +27,6 @@
           "component": "text",
           "name": "imageAlt",
           "label": "Alt Text"
-        },
-        {
-          "component": "tab",
-          "label": "Mobile Specific",
-          "name": "mobileSpecific"
-        },
-        {
-          "component": "select",
-          "name": "mobileimageresize",
-          "label": "Image Resize Mode",
-          "valueType": "string",
-          "value": "cover",
-          "options": [
-            {
-              "name": "Contain",
-              "value": "contain"
-            },
-            {
-              "name": "Cover",
-              "value": "cover"
-            }
-          ]
         }
       ]
     }
